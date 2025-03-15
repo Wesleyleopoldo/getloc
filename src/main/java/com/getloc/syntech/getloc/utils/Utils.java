@@ -4,12 +4,26 @@ import java.util.UUID;
 
 public class Utils {
 
-    protected static UUID uuid;
+    private UUID uuid;
 
-    protected Utils() {
+    private Utils() {
     }
 
-    public static byte[] generateRandomBinaryByUUID() {
+    public Utils setUUID(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
+
+    public static Utils create() {
+        return new Utils();
+    }
+
+    public Utils generateRandomUUID() {
+        this.uuid = UUID.randomUUID();
+        return this;
+    }
+
+    public byte[] generateRandomBinaryByUUID() {
 
         byte[] bytes = new byte[16];
         long mostSigBits = uuid.getMostSignificantBits();
@@ -22,7 +36,7 @@ public class Utils {
         return bytes;
     }
 
-    public static UUID convertBytesForUUID(byte[] bytes) {
+    public UUID convertBytesForUUID(byte[] bytes) {
         long mostSigBits = 0;
         long leastSigBits = 0;
 
