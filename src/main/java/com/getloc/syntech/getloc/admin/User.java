@@ -1,8 +1,12 @@
 package com.getloc.syntech.getloc.admin;
 
-import org.bson.types.Binary;
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.getloc.syntech.getloc.mobile.Device;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,9 +23,11 @@ import lombok.Setter;
 public class User {
 
     @Id
-    protected Binary userId;
+    private String userId;
     private String name;
     private String email;
     private String password;
+    @DBRef
+    private List<Device> devices;
     
 }
