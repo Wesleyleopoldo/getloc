@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.getloc.syntech.getloc.admin.User;
+import com.getloc.syntech.getloc.admin.UserRepository;
 import com.getloc.syntech.getloc.config.EnviromentsLoad;
 import com.getloc.syntech.getloc.exceptions.AccessDeniedException;
 import com.getloc.syntech.getloc.exceptions.NotFoundException;
-import com.getloc.syntech.getloc.repository.UserRepository;
 import com.getloc.syntech.getloc.responsesDTO.UserDTO;
 
 

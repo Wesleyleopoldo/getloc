@@ -14,11 +14,11 @@ import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
 import com.getloc.syntech.getloc.admin.User;
+import com.getloc.syntech.getloc.admin.UserRepository;
 import com.getloc.syntech.getloc.exceptions.AlreadyExistsException;
 import com.getloc.syntech.getloc.exceptions.InvalidArgumentException;
 import com.getloc.syntech.getloc.exceptions.NotFoundException;
 import com.getloc.syntech.getloc.helper.UserHelper;
-import com.getloc.syntech.getloc.repository.UserRepository;
 import com.getloc.syntech.getloc.requests.users.LoginRequest;
 import com.getloc.syntech.getloc.requests.users.SignupBody;
 import com.getloc.syntech.getloc.requests.users.UpdateBody;

@@ -9,7 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.getloc.syntech.getloc.admin.User;
-import com.getloc.syntech.getloc.repository.UserRepository;
+import com.getloc.syntech.getloc.admin.UserRepository;
 import com.getloc.syntech.getloc.utils.UtilTools;
 
 @Configuration

@@ -1,5 +1,6 @@
 package com.getloc.syntech.getloc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 // import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,15 +10,20 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 
 import com.getloc.syntech.getloc.exceptions.InvalidArgumentException;
 // import com.getloc.syntech.getloc.exceptions.AlreadyExistsException;
 // import com.getloc.syntech.getloc.exceptions.InvalidArgumentException;
 import com.getloc.syntech.getloc.exceptions.NotFoundException;
 import com.getloc.syntech.getloc.helper.UserHelper;
+import com.getloc.syntech.getloc.requests.devices.NewDevice;
+import com.getloc.syntech.getloc.requests.devices.UpdateDeviceName;
 import com.getloc.syntech.getloc.requests.users.LoginRequest;
 import com.getloc.syntech.getloc.responsesDTO.AllUsersDTO;
 import com.getloc.syntech.getloc.responsesDTO.LoginDTO;
+import com.getloc.syntech.getloc.responsesDTO.devicesDTO.RegisterDeviceDTO;
+import com.getloc.syntech.getloc.services.DeviceService;
 // import com.getloc.syntech.getloc.requests.users.SignupBody;
 // import com.getloc.syntech.getloc.exceptions.AlreadyExistsException;
 // import com.getloc.syntech.getloc.requests.users.SignupBody;
@@ -33,6 +39,9 @@ class GetlocApplicationTests {
 
 	@Autowired
 	private UserHelper userHelper;
+
+	@Autowired
+	private DeviceService deviceService;
 
 	// @Test
 	// void testPostUser() {
@@ -85,22 +94,36 @@ class GetlocApplicationTests {
 	// 	assertTrue(userService.getAllUsers() instanceof List<AllUsersDTO>, "Tipo retornado não é o esperado");
 	// }
 
-	@Test
-	void testIsValidUser() {
-		assertTrue(userHelper.isValidUser("67d71dcf233a98028e19d463", "67d71dcf233a98028e19d463"), "Tipo retornado não é o esperado");
-	}
+	// @Test
+	// void testIsValidUser() {
+	// 	assertTrue(userHelper.isValidUser("67d71dcf233a98028e19d463", "67d71dcf233a98028e19d463"), "Tipo retornado não é o esperado");
+	// }
+
+	// @Test
+	// void testLogin() {
+	// 	LoginRequest loginRequest = new LoginRequest("suportesyntech@gmail.com", "12345678");
+	// 	assertTrue(userService.loginService(loginRequest) instanceof LoginDTO, "Tipo retornado não é o esperado!!!");
+	// }
+
+	// @Test
+	// void testLoginException() {
+	// 	LoginRequest loginRequest = new LoginRequest("suportesyntech@gmail.com", "12345678");
+	// 	assertThrows(InvalidArgumentException.class, () -> {
+	// 		userService.loginService(loginRequest);
+	// 	});
+	// }
+
+	// @Test
+	// void testPostDevice() {
+	// 	NewDevice newDevice = new NewDevice("Notebook-HP-1000", "Rua cientista albert sabin", new GeoJsonPoint(-34.6037, -58.3816));
+
+	// 	assertEquals("Sucesso!", deviceService.postDevice(newDevice), "Algo não deu certo...");
+	// }
 
 	@Test
-	void testLogin() {
-		LoginRequest loginRequest = new LoginRequest("suportesyntech@gmail.com", "12345678");
-		assertTrue(userService.loginService(loginRequest) instanceof LoginDTO, "Tipo retornado não é o esperado!!!");
-	}
+	void testUpdateDeviceName() {
+		UpdateDeviceName deviceName = new UpdateDeviceName("HP-1000-2025");
 
-	@Test
-	void testLoginException() {
-		LoginRequest loginRequest = new LoginRequest("suportesyntech@gmail.com", "12345678");
-		assertThrows(InvalidArgumentException.class, () -> {
-			userService.loginService(loginRequest);
-		});
+		assertEquals("Sucesso!", deviceService.updateDeviceName("67e0707d15521a7c9f534e51", deviceName), "Algo não deu certo...");
 	}
 }

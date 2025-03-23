@@ -3,7 +3,6 @@ package com.getloc.syntech.getloc.admin;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.getloc.syntech.getloc.mobile.Device;
@@ -27,7 +26,6 @@ public class User {
     private String name;
     private String email;
     private String password;
-    @DBRef
     private List<Device> devices;
     
 }
